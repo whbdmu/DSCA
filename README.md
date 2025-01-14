@@ -5,7 +5,7 @@
 This is the official implementation for our paper Unsupervised Domain Adaptive Person Search via Dual Self-Calibration (DSCA) in AAAI2025. The code is based on the official code of [DAPS](https://github.com/caposerenity/DAPS) and [SPCL](https://github.com/yxgeee/SpCL).
 
 Performance :
-we tried some hyper-parameters and got better ReID performance reported in our paper.
+We retrained the model and got better ReID performance reported in our paper.
 
 |  Source   |  Target   | mAP  | Top-1 |                             CKPT                             |
 | :-------: | :-------: | :--: | :---: | :----------------------------------------------------------: |

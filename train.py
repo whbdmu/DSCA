@@ -161,15 +161,12 @@ def main(args):
             print("hard negative instances :" + str(len(negative_fea)))
 
             # Calculate distance
-            print("==> Create pseudo labels for unlabeled target domain with self-paced policy")
             rerank_dist = compute_jaccard_distance(target_features, k1=30, k2=6, search_option=3, use_float16=True)
-            # select & cluster images as training set of this epochs
             pseudo_labels = cluster.fit_predict(rerank_dist)
             num_ids = len(set(pseudo_labels)) - (1 if -1 in pseudo_labels else 0)
             print(f"pseudo_labels length :{len(pseudo_labels)}")
             # merge source dataset and target dataset, set pseudo_labels after source domain
             pseudo_labels = generate_pseudo_labels(pseudo_labels, source_classes, num_ids)
-            # use sorted_keys for searching pseudo_labels
             print("==> Modifying labels in target domain to build new training set")
             DataMoudle.reset_dataset_with_pseudo_labels(img_proposal_boxes, sorted_keys, pseudo_labels)
             # re-intalizating features memory
